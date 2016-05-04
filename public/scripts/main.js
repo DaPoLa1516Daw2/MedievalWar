@@ -26,12 +26,16 @@ app.controller('loginCtrl', ['$scope', 'rest', function($scope, rest) {
 
     $scope.login = function() {
 
+        rest.user.get({_id: $scope.user.username});
+
     };
 
     $scope.register = function() {
         console.log($scope.user);
         rest.user.save($scope.user);
     };
+
+
 }]);
 'use strict';
 

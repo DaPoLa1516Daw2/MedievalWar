@@ -8,7 +8,6 @@ let schema = new mongoose.Schema({
     gold: {type: Number},
     stone: {type: Number}
 
-
 });
 
 module.exports = schema;

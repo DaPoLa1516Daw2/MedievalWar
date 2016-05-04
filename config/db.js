@@ -2,6 +2,6 @@
 
 module.exports = {
 
-    url: 'mongodb://localhost:27017/MedievalWar',
+    url: 'mongodb://172.20.16.164:27017/MedievalWar',
 
 };
