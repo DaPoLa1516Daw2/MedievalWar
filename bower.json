@@ -1,0 +1,29 @@
+{
+  "name": "admin",
+  "description": "",
+  "main": "",
+  "authors": [
+    "David Postigo And Edgar Benavent"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8",
+    "jquery": "~2.2.0",
+    "angular-bootstrap": "~1.0.3",
+    "angular-resource": "~1.4.8",
+    "angular-google-maps": "~2.3.0",
+    "ui-select": "angular-ui-select#~0.14.2"
+  }
+}
