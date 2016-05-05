@@ -8,7 +8,7 @@ const indexCtrl = require('./controllers');
 
 //const clientCtrl = require('./controllers/client');
 const userCtrl = require('./controllers/users');
-const gameCtrl = require('./controllers/users');
+const gameCtrl = require('./controllers/game');
 
 
 let router = module.exports = express.Router();

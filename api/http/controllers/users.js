@@ -58,8 +58,6 @@ router.post('/', (req, res) => {
     let user = req.body;
     user.password = sha1(user.password);
 
-    console.log('ko');
-
     User.create(user, (err, user) => {
        if(err) {
            console.log(err);
@@ -102,18 +100,27 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/:user', (req , res) =>{
+router.get('/:user/:pass', (req , res) =>{
 
     var user = req.params.user;
+    var pass = sha1(req.params.pass);
     var projection = '_id game username password';
+
+
 
     User.findOne({username: user}, projection ,(err, u) => {
         if(err) {
+            console.log(err);
             res.sendStatus(500);
         } else if(!u) {
             res.sendStatus(404);
         } else {
-            res.json(u);
+            console.log(u.password, pass);
+            if(u.password == pass) {
+                res.json(u);
+            } else {
+                res.sendStatus(404);
+            }
         }
     })
 

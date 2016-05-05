@@ -2,7 +2,7 @@
 
 app.service('rest', ['$resource', function($resource)  {
 
-    var user = $resource('/user/:user', {user: '@user'}, {
+    var user = $resource('/user/:user/:pass', {user: '@user', pass: "@pass"}, {
 
     });
 

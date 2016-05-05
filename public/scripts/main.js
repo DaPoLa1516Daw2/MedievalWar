@@ -27,9 +27,11 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
     $scope.login = function() {
 
-        rest.user.get({user: $scope.log.username}, function(u){
+        rest.user.get({user: $scope.log.username, pass: $scope.log.password}, function(u){
             console.log(u);
             $rootScope.user = u;
+        }, function() {
+            $scope.err = true;
         });
 
     };
@@ -45,7 +47,7 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
 app.service('rest', ['$resource', function($resource)  {
 
-    var user = $resource('/user/:user', {user: '@user'}, {
+    var user = $resource('/user/:user/:pass', {user: '@user', pass: "@pass"}, {
 
     });
 
