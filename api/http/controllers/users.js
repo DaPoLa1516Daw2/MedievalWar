@@ -58,8 +58,11 @@ router.post('/', (req, res) => {
     let user = req.body;
     user.password = sha1(user.password);
 
+    console.log('ko');
+
     User.create(user, (err, user) => {
        if(err) {
+           console.log(err);
            res.sendStatus(500);
        } else if(!user) {
            res.sendStatus(404);
@@ -70,6 +73,7 @@ router.post('/', (req, res) => {
 
            Game.create(g, (err, game) => {
                if(err) {
+                   console.log(err);
                    res.sendStatus(500);
                } else if(!game) {
                    res.sendStatus(404);
@@ -79,6 +83,7 @@ router.post('/', (req, res) => {
 
                    User.findByIdAndUpdate(user._id, user, (err, u) => {
                        if(err) {
+                           console.log(err);
                            res.sendStatus(500);
                        } else if(!u) {
                            res.sendStatus(404);
@@ -95,8 +100,21 @@ router.post('/', (req, res) => {
            });
        }
     });
+});
 
+router.get('/:user', (req , res) =>{
 
+    var user = req.params.user;
+    var projection = '_id game username password';
 
+    User.findOne({username: user}, projection ,(err, u) => {
+        if(err) {
+            res.sendStatus(500);
+        } else if(!u) {
+            res.sendStatus(404);
+        } else {
+            res.json(u);
+        }
+    })
 
 });

@@ -1,19 +1,23 @@
 'use strict';
 
-app.controller('loginCtrl', ['$scope', 'rest', function($scope, rest) {
+app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, rest, $rootScope) {
     $scope.opt = 0;
 
-    $scope.user = {};
+    $scope.reg = {};
+    $scope.log = {};
 
     $scope.login = function() {
 
-        rest.user.get({_id: $scope.user.username});
+        rest.user.get({user: $scope.log.username}, function(u){
+            console.log(u);
+            $rootScope.user = u;
+        });
 
     };
 
     $scope.register = function() {
-        console.log($scope.user);
-        rest.user.save($scope.user);
+
+        rest.user.save($scope.reg);
     };
 
 
