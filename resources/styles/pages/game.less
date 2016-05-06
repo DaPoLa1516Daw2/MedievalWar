@@ -1,33 +1,45 @@
+html {
+  height: 100%;
+  width: 100%;
+
+  body {
+    height: 100%;
+    width: 100%;
+
+    #gcontainer {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+
 #game {
 
   background-image: url('../images/mapa_main1.jpg');
-  background-size: contain;
+  background-size: 100% 100%;
+  background-repeat: no-repeat ;
+  //background-size: contain;
   //background-position-x: 50%;
   //background-position-y: 0%;
-  //width: 100%;
-  //height: 100%;
+  width: 100%;
+  height: 100%;
   // min-height: 100%;
   // min-width: 100%;
-  //position: relative;
+  position: relative;
 
 
 
+  #castle {
+    position: absolute;
+    top: 9.6%;
+    left: 51.1%;
+    background-image: url('../images/Castillo1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 70%;
+    width: 13%;
+    height: 43%;
+  }
 
-  //.background {
-  //  height: 100%;
-  //  width: 100%;
-  //  position: relative;
-  //  z-index: 1;
-  //}
-  //
-  //
-  //#castle {
-  //  height: auto;
-  //  width: 100%;
-  //  position: absolute;
-  //  top: 13%;
-  //  right: 35%;
-  //  z-index: 2;
-  //}
 
 }
