@@ -17,6 +17,15 @@ app.run(['$rootScope', function($scope) {
 
 }]);
 
+
+app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', function($scope, rest, $rootScope) {
+
+
+
+
+
+
+}]);
 'use strict';
 
 app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, rest, $rootScope) {

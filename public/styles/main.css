@@ -6762,3 +6762,7 @@ button.close {
 #login .buttons {
   overflow: hidden;
 }
+#game {
+  background-image: url('../images/mapa_main1.jpg');
+  background-size: contain;
+}
