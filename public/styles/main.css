@@ -6786,7 +6786,6 @@ html body #gcontainer {
   position: absolute;
   top: 9.6%;
   left: 51.1%;
-  background-image: url('../images/castle.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6796,7 +6795,6 @@ html body #gcontainer {
   position: absolute;
   top: 24.6%;
   left: 56.1%;
-  background-image: url('../images/church.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 34%;
@@ -6806,7 +6804,6 @@ html body #gcontainer {
   position: absolute;
   top: 44.6%;
   left: 63.1%;
-  background-image: url('../images/barracks.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6816,7 +6813,6 @@ html body #gcontainer {
   position: absolute;
   top: 56.6%;
   left: 36.1%;
-  background-image: url('../images/forge.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6826,7 +6822,6 @@ html body #gcontainer {
   position: absolute;
   top: 8.6%;
   left: 32.1%;
-  background-image: url('../images/tavern.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6836,7 +6831,6 @@ html body #gcontainer {
   position: absolute;
   top: 23.6%;
   left: 24.1%;
-  background-image: url('../images/warehouse.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6846,7 +6840,6 @@ html body #gcontainer {
   position: absolute;
   top: 61.6%;
   left: 49.1%;
-  background-image: url('../images/tower.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6856,7 +6849,6 @@ html body #gcontainer {
   position: absolute;
   top: 45.6%;
   left: 23.1%;
-  background-image: url('../images/cavalry.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6866,7 +6858,6 @@ html body #gcontainer {
   position: absolute;
   top: 22.6%;
   left: 39.1%;
-  background-image: url('../images/market.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6874,7 +6865,6 @@ html body #gcontainer {
 }
 #game .wall {
   position: absolute;
-  background-image: url('../images/wall.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   top: 0.0%;
@@ -6884,7 +6874,6 @@ html body #gcontainer {
 }
 #game .mineStone {
   position: absolute;
-  background-image: url('../images/minestone.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 13%;
@@ -6896,7 +6885,6 @@ html body #gcontainer {
   position: absolute;
   top: 1.6%;
   left: 79.1%;
-  background-image: url('../images/minegold.png');
   background-repeat: no-repeat;
   background-size: 100% 70%;
   width: 14%;

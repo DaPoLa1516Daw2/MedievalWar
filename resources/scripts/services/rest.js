@@ -6,8 +6,13 @@ app.service('rest', ['$resource', function($resource)  {
 
     });
 
+    var game = $resource('/game/:_id', {_id: "@_id"}, {
+
+    });
+
     return {
-        user: user
+        user: user,
+        game: game
     };
 
 }]);

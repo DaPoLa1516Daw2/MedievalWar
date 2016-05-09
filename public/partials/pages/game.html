@@ -1,20 +1,39 @@
 <div id="game" ng-controller="gameCtrl" >
-    <div id="mineGold" ></div>
 
 <!--<img class="background" src="../images/mapa_main1.jpg" />-->
-    <div id="wall" ></div>
-<div id="castle" >
-    <!--<img src="../images/Castillo1.png" ng-if="game.castle.level >= 1" />-->
-    <!--<img src="../images/Castillo1.png"  />--></div>
-    <div id="church" ></div>
-    <div id="barracks" ></div>
-    <div id="forge" ></div>
-    <div id="tavern" ></div>
-    <div id="warehouse" ></div>
-    <div id="tower" ></div>
+
+    <div class="castle" style="background-image: url('../images/castle.png')" ng-click="create('castle')" ng-if="game.castle.level > 0" ></div>
+    <div class="castle" ng-click="create('castle')" ng-if="game.castle.level == 0" ></div>
+
+    <div class="church" style="background-image: url('../images/church.png')" ng-click="create('church')" ng-if="game.church.level > 0" ></div>
+    <div class="church" ng-click="create('church')" ng-if="game.church.level == 0" ></div>
+
+    <div class="barracks" style="background-image: url('../images/barracks.png')" ng-click="create('barracks')" ng-if="game.barracks.level > 0" ></div>
+    <div class="barracks" ng-click="create('barracks')" ng-if="game.barracks.level == 0" ></div>
+
+    <div class="forge" style="background-image: url('../images/forge.png')" ng-click="create('forge')" ng-if="game.forge.level > 0" ></div>
+    <div class="forge" ng-click="create('forge')" ng-if="game.forge.level == 0" ></div>
+
+    <div class="tavern" style="background-image: url('../images/tavern.png')" ng-click="create('tavern')" ng-if="game.tavern.level > 0" ></div>
+    <div class="tavern" ng-click="create('tavern')" ng-if="game.tavern.level == 0" ></div>
+
+    <div class="warehouse" style="background-image: url('../images/warehouse.png')" ng-click="create('warehouse')" ng-if="game.warehouse.level > 0" ></div>
+    <div class="warehouse" ng-click="create('warehouse')" ng-if="game.warehouse.level == 0" ></div>
+
+    <div class="tower" style="background-image: url('../images/tower.png')" ng-click="create('tower')" ng-if="game.tower.level > 0" ></div>
+    <div class="tower" ng-click="create('tower')" ng-if="game.tower.level == 0" ></div>
+
+
+    </div>
+    <!--<div id="barracks" ></div>-->
+    <!--<div id="forge" ></div>-->
+    <!--<div id="house1" ></div>-->
+    <!--<div id="house2" ></div>-->
+    <!--<div id="tower1" ></div>-->
+    <!--<div id="tower2" ></div>-->
     <div id="cavalry" ></div>
     <div id="market" ></div>
-    <div id="mineStone" ></div>
+
 
 
 </div>

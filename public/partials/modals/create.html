@@ -1,0 +1,26 @@
+<div class="modal-header" >
+    <h3 class="modal-title pull-left" >{{item.type.toUpperCase()}}</h3>
+</div>
+
+<div class="modal-body activity-modal" >
+
+    <div class="row" >
+
+        <div class="col-sm-4" >
+            <img ng-src="../images/modal/modal_{{item.type}}.jpg" >
+        </div>
+
+
+        <div class="col-sm-8" >
+            <p>{{item.gold}}</p>
+            <p>{{item.stone}}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal-footer" >
+    <button class="btn btn-primary" type="button" ng-click="build()" >Build</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()" >Cancel</button>
+</div>

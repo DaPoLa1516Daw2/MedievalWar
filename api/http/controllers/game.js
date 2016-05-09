@@ -6,9 +6,9 @@ const Game = require('../../db/models/game');
 
 let router = module.exports = express.Router();
 
-router.get('/:id', (req , res) =>{
+router.get('/:_id', (req , res) =>{
 
-    var id = req.params.id;
+    var id = req.params._id;
 
 
     Game.findOne({_id: id}, (err, g)=> {
