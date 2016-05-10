@@ -1,5 +1,7 @@
 <div id="game" ng-controller="gameCtrl" >
 
+    <div class="wall" style="background-image: url('../images/wall.png')" ng-click="create('wall')" ng-if="game.wall.level > 0" ></div>
+    <div class="wall" ng-click="create('wall')" ng-if="game.wall.level == 0" ></div>
 
     <div class="castle" style="background-image: url('../images/castle.png')" ng-click="create('castle')" ng-if="game.castle.level > 0" ></div>
     <div class="castle" ng-click="create('castle')" ng-if="game.castle.level == 0" ></div>
@@ -28,12 +30,19 @@
     <div class="market" style="background-image: url('../images/market.png')" ng-click="create('market')" ng-if="game.market.level > 0" ></div>
     <div class="market" ng-click="create('market')" ng-if="game.market.level == 0" ></div>
 
+    <div class="stoneMine" style="background-image: url('../images/minestone.png')" ng-click="create('stoneMine')" ng-if="game.stoneMine.level > 0" ></div>
+    <div class="stoneMine" ng-click="create('stoneMine')" ng-if="game.stoneMine.level == 0" ></div>
+
+    <div class="goldMine" style="background-image: url('../images/minegold.png')" ng-click="create('goldMine')" ng-if="game.goldMine.level > 0" ></div>
+    <div class="goldMine" ng-click="create('goldMine')" ng-if="game.goldMine.level == 0" ></div>
+
+
 
     <div class="gold">
-        <p class="text-gold">{{game.resources.gold}}</p>
+        <p>{{game.resources.gold}}</p>
     </div>
     <div class="stone">
-        <p class="text-stone">{{game.resources.stone}}</p>
+        <p>{{game.resources.stone}}</p>
     </div>
 
 </div>
