@@ -6890,3 +6890,29 @@ html body #gcontainer {
   width: 14%;
   height: 29%;
 }
+#game .gold {
+  position: absolute;
+  left: 40%;
+  width: 10%;
+  height: 10%;
+  background-color: orange;
+  opacity: 0.5;
+  border: solid #000;
+  text-align: center;
+}
+#game .stone {
+  position: absolute;
+  left: 50%;
+  width: 10%;
+  height: 10%;
+  background-color: grey;
+  opacity: 0.5;
+  border: solid #000;
+  text-align: center;
+}
+#game .text-gold {
+  font-size: large;
+}
+#game .text-stone {
+  font-size: large;
+}
