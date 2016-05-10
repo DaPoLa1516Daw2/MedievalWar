@@ -1,6 +1,5 @@
 <div id="game" ng-controller="gameCtrl" >
 
-<!--<img class="background" src="../images/mapa_main1.jpg" />-->
 
     <div class="castle" style="background-image: url('../images/castle.png')" ng-click="create('castle')" ng-if="game.castle.level > 0" ></div>
     <div class="castle" ng-click="create('castle')" ng-if="game.castle.level == 0" ></div>
@@ -23,16 +22,11 @@
     <div class="tower" style="background-image: url('../images/tower.png')" ng-click="create('tower')" ng-if="game.tower.level > 0" ></div>
     <div class="tower" ng-click="create('tower')" ng-if="game.tower.level == 0" ></div>
 
+    <div class="cavalry" style="background-image: url('../images/cavalry.png')" ng-click="create('cavalry')" ng-if="game.cavalry.level > 0" ></div>
+    <div class="cavalry" ng-click="create('cavalry')" ng-if="game.cavalry.level == 0" ></div>
 
-    </div>
-    <!--<div id="barracks" ></div>-->
-    <!--<div id="forge" ></div>-->
-    <!--<div id="house1" ></div>-->
-    <!--<div id="house2" ></div>-->
-    <!--<div id="tower1" ></div>-->
-    <!--<div id="tower2" ></div>-->
-    <div id="cavalry" ></div>
-    <div id="market" ></div>
+    <div class="market" style="background-image: url('../images/market.png')" ng-click="create('market')" ng-if="game.market.level > 0" ></div>
+    <div class="market" ng-click="create('market')" ng-if="game.market.level == 0" ></div>
 
 
 

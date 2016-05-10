@@ -4,15 +4,6 @@ var app = angular.module('MedievalWar', ['ngResource', 'ui.bootstrap', 'ui.selec
 
 app.run(['$rootScope', function($scope) {
 
-    //syncdb._init();
 
-    //auth.watch(function(user) {
-    //    $scope.user = user;
-    //
-    //});
-
-    //auth.isLogged(function(user) {
-    //    $scope.user = user;
-    //});
 
 }]);
