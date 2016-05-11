@@ -6922,3 +6922,42 @@ html body #gcontainer {
   color: #000000;
   font-size: x-large;
 }
+#game .menu {
+  float: left;
+  width: 10%;
+  height: 100%;
+}
+#game .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+#game .dropdown {
+  position: relative;
+  display: inline-block;
+}
+#game .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+#game .dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+#game .dropdown-content p:hover {
+  background-color: #f1f1f1;
+}
+#game .dropdown:hover .dropdown-content {
+  display: block;
+}
+#game .dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
