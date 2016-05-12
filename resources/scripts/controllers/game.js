@@ -1,5 +1,5 @@
 
-app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', '$uibModal', function($scope, rest, $rootScope, $uibModal) {
+app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout) {
 
 
     rest.game.get({_id: $rootScope.user.game}, function(game){
@@ -42,14 +42,25 @@ app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', '$uibModal', functio
             $scope.game.resources.gold = $scope.game.resources.gold - item.gold;
             $scope.game.resources.stone = $scope.game.resources.stone - item.stone;
 
-            setTimeout(function () {
+            //rest.game.update({_id: $scope.game._id}, $scope.game);
+
+            //$timeout(function() {
+            //    console.log('hola');
+            //}, 1000);
+
+            $timeout(function () {
                 $scope.game[type].level++;
                 console.log($scope.game[type], $scope.game[type].level);
-                $scope.$apply();
+                //rest.game.update({_id: $scope.game._id}, $scope.game);
+
             }, 6000)
 
         });
     };
 
+    //function _update() {
+    //    rest.game.update({_id: $scope.game._id}, $scope.game);
+    //}
 
-}]);
+
+});

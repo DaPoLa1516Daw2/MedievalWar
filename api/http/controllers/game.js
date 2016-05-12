@@ -24,3 +24,39 @@ router.get('/:_id', (req , res) =>{
     });
 
 });
+
+router.put('/:_id', (req, res) => {
+
+    var id = req.params._id;
+
+    var game = req.body.game;
+
+    console.log()
+
+
+    Game.findOne({_id: id}, (err, g) => {
+
+        if(err) {
+            res.sendStatus(500);
+        }else if(!g) {
+            res.sendStatus(404);
+        } else {
+            g = game;
+
+            Game.findOneAndUpdate({_id: id}, g, (err, ga) => {
+
+                if(err) {
+                    res.sendStatus(500);
+                }else if(!ga) {
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(200);
+                }
+
+            })
+        }
+
+    })
+
+
+});

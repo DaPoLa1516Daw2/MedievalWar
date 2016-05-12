@@ -7,6 +7,7 @@ app.service('rest', ['$resource', function($resource)  {
     });
 
     var game = $resource('/game/:_id', {_id: "@_id"}, {
+        update: {method:'PUT'}
 
     });
 

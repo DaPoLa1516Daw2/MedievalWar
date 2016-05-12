@@ -1,8 +1,5 @@
 <div id="game" ng-controller="gameCtrl" >
 
-
-
-
     <div class="wall" style="background-image: url('../images/wall.png')" ng-click="create('wall')" ng-if="game.wall.level > 0" ></div>
     <div class="wall" ng-click="create('wall')" ng-if="game.wall.level == 0" ></div>
 
@@ -51,10 +48,13 @@
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <p ng-click="create('castle')" ng-if="game.castle.level == 0">Castillo</p>
-                <p ng-click="create('wall')" ng-if="game.wall.level == 0" >Muralla</p>
-                <p ng-click="create('tower')" ng-if="game.tower.level == 0">Torre</p>
-                <p ng-click="create('barracks')" ng-if="game.barracks.level == 0">Cuartel</p>
+                <p ng-click="create('castle')" >Castle</p>
+                <p ng-click="create('wall')" >Wall</p>
+                <p ng-click="create('tower')" >Tower</p>
+                <p ng-click="create('barracks')" >Barracks</p>
+                <p ng-click="create('stoneMine')" >Stone Mine</p>
+                <p ng-click="create('goldMine')" >Gold Mine</p>
+                <p ng-click="attack()" >World Map</p>
             </div>
         </div>
     </div>
