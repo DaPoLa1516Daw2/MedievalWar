@@ -9,7 +9,7 @@ app.run(['$rootScope', function($scope) {
 }]);
 
 
-app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', '$uibModal', function($scope, rest, $rootScope, $uibModal, $timeout) {
+app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout) {
 
 
     rest.game.get({_id: $rootScope.user.game}, function(game){
@@ -58,11 +58,10 @@ app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', '$uibModal', functio
             //    console.log('hola');
             //}, 1000);
 
-            setTimeout(function () {
+            $timeout(function () {
                 $scope.game[type].level++;
                 console.log($scope.game[type], $scope.game[type].level);
                 //rest.game.update({_id: $scope.game._id}, $scope.game);
-                $scope.$apply();
 
             }, 6000)
 
@@ -74,7 +73,7 @@ app.controller('gameCtrl', ['$scope', 'rest', '$rootScope', '$uibModal', functio
     //}
 
 
-}]);
+});
 'use strict';
 
 app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, rest, $rootScope) {

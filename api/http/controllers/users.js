@@ -11,6 +11,8 @@ let router = module.exports = express.Router();
 var world = 1;
 var country = 1;
 
+_count();
+
 const g = {
     castle: {
         level: 0,
@@ -125,3 +127,12 @@ router.get('/:user/:pass', (req , res) =>{
     })
 
 });
+
+function  _count () {
+    User.count({}, function(err, n) {
+        
+        world = Math.floor(n/6)+1;
+        country = n%6;
+        console.log(n, world, country);
+    })
+}
