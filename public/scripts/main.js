@@ -9,20 +9,45 @@ app.run(['$rootScope', function($scope) {
 }]);
 
 
-app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout) {
+app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout, $interval) {
 
 
     rest.game.get({_id: $rootScope.user.game}, function(game){
         $scope.game = game;
-        console.log($scope.game);
+
+        for(var key in $scope.game) {
+
+            if($scope.game[key].finish) {
+
+                if((new Date($scope.game[key].finish) - new Date()) <= 0 ) {
+
+                    $scope.game[key].level++;
+                    delete $scope.game[key].finish;
+
+                }else {
+                    console.log($scope.game[key].finish, (new Date($scope.game[key].finish)- new Date()), $scope.game[key]);
+
+                    $timeout(function() {
+                        console.log('ok');
+                        console.log($scope.game[key].level);
+                        $scope.game[key].level++;
+                        delete $scope.game[key].finish;
+                        _update();
+                    },
+                        new Date($scope.game[key].finish)- new Date()
+                    );
+
+                }
+            }
+        }
     });
 
-    setInterval(function() {
+    $interval(function() {
 
         $scope.game.resources.gold = Math.round($scope.game.resources.gold + (($scope.game.resources.gold * 16) /100));
         $scope.game.resources.stone =  Math.round($scope.game.resources.stone + (($scope.game.resources.stone * 16) /100));
-        $scope.$apply();
-    //}, 600000);
+        _update();
+
     }, 600000);
 
     $scope.create = function(type) {
@@ -45,32 +70,33 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
                 }
             },
             size: 'lg'
+
         }).result.then(function(item) {
+
             delete  item.type;
+
+            item.finish = new Date() - new Date(0) + item.time;
             $scope.game[type] = item;
 
             $scope.game.resources.gold = $scope.game.resources.gold - item.gold;
             $scope.game.resources.stone = $scope.game.resources.stone - item.stone;
+            _update();
 
-            //rest.game.update({_id: $scope.game._id}, $scope.game);
-
-            //$timeout(function() {
-            //    console.log('hola');
-            //}, 1000);
-
-            $timeout(function () {
+            $timeout(function() {
                 $scope.game[type].level++;
-                console.log($scope.game[type], $scope.game[type].level);
-                //rest.game.update({_id: $scope.game._id}, $scope.game);
+                delete $scope.game[type].finish;
+                _update();
+            }, item.time);
 
-            }, 6000)
 
         });
     };
 
-    //function _update() {
-    //    rest.game.update({_id: $scope.game._id}, $scope.game);
-    //}
+    function _update() {
+
+        rest.game.update({_id: $scope.game._id}, $scope.game, function() {
+        });
+    }
 
 
 });
@@ -133,6 +159,7 @@ app.service('rest', ['$resource', function($resource)  {
     });
 
     var game = $resource('/game/:_id', {_id: "@_id"}, {
+        delete: {method:'DELETE'},
         update: {method:'PUT'}
 
     });

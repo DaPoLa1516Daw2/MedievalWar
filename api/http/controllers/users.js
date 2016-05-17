@@ -17,36 +17,42 @@ const g = {
     castle: {
         level: 0,
         gold: 700,
-        stone: 500
+        stone: 500,
+        time: 300000
     },
     goldMine: {
         level: 0,
         gold: 0,
         stone: 0,
-        income: 450
+        income: 450,
+        time: 60000
     },
     stoneMine: {
         level: 0,
         gold: 50,
         stone: 0,
-        income: 250
+        income: 250,
+        time: 60000
     },
     wall: {
         level: 0,
         gold: 2000,
         stone: 2500,
-        defense: 400
+        defense: 400,
+        time: 1800000
     },
     barracks: {
         level: 0,
         gold: 400,
-        stone: 150
+        stone: 150,
+        time: 300000
     },
     tower: {
         level: 0,
         gold: 600,
         stone: 400,
-        defense: 100
+        defense: 100,
+        time: 600000
     },
     army: {},
     resources: {
@@ -132,7 +138,6 @@ function  _count () {
     User.count({}, function(err, n) {
         
         world = Math.floor(n/6)+1;
-        country = n%6;
-        console.log(n, world, country);
+        country = (n%6)+1;
     })
 }

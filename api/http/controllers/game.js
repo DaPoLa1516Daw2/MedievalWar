@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const User = require('../../db/models/users');
 const Game = require('../../db/models/game');
 
 let router = module.exports = express.Router();
@@ -29,10 +28,9 @@ router.put('/:_id', (req, res) => {
 
     var id = req.params._id;
 
-    var game = req.body.game;
+    var game = req.body;
 
-    console.log()
-
+    console.log('guardando', game);
 
     Game.findOne({_id: id}, (err, g) => {
 
@@ -41,6 +39,8 @@ router.put('/:_id', (req, res) => {
         }else if(!g) {
             res.sendStatus(404);
         } else {
+
+            console.log(g);
             g = game;
 
             Game.findOneAndUpdate({_id: id}, g, (err, ga) => {

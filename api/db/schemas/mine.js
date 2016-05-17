@@ -6,7 +6,9 @@ let schema = new mongoose.Schema({
     level: {type: Number},
     gold: {type: Number},
     stone: {type: Number},
-    income: {type: Number}
+    income: {type: Number},
+    time: {type: Number},
+    finish: {type: Number}
 
 });
 
