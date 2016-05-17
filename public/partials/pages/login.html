@@ -1,4 +1,4 @@
-
+<div id="loginmain">
 <form id="login" ng-controller="loginCtrl" >
 
     <ul class="nav nav-pills">
@@ -12,6 +12,7 @@
 
 
 </form>
+
 
 <script id="option-0" type="text/ng-template" >
 
@@ -36,6 +37,7 @@
 
 <script id="option-1" type="text/ng-template" >
 
+    <label ng-if="ok"> Has sido regristrado correctamente </label>
     <div class="form-group" >
         <label class="control-label" for="username" >Nombre de usuario</label>
         <input id="username" class="form-control" type="text" ng-model="reg.username" />
@@ -51,3 +53,5 @@
     </div>
 
 </script>
+    <div id="Logo"></div>
+</div>

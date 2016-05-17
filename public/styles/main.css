@@ -6758,9 +6758,33 @@ button.close {
   margin: 30px auto;
   padding: 15px;
   border: solid 1px #ccc;
+  background-color: #333333;
+  opacity: 0.8;
+  float: left;
+  margin-left: 5%;
+  margin-top: 10%;
 }
 #login .buttons {
   overflow: hidden;
+}
+#loginmain {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-image: url('../images/mapalogin1.jpg');
+  color: white ;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+#Logo {
+  background-size: 100% 100%;
+  background-image: url('../images/MedievalWarText.png');
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 50%;
+  margin-top: 6%;
+  left: 45%;
+  position: relative;
 }
 html {
   height: 100%;

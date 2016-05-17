@@ -18,7 +18,9 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
     $scope.register = function() {
 
-        rest.user.save($scope.reg);
+        rest.user.save($scope.reg, function() {
+            $scope.ok = true;
+        });
     };
 
 
