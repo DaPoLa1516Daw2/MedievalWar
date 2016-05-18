@@ -6763,6 +6763,7 @@ button.close {
   float: left;
   margin-left: 5%;
   margin-top: 10%;
+  position: fixed;
 }
 #login .buttons {
   overflow: hidden;
@@ -6948,7 +6949,6 @@ html body #gcontainer {
 }
 #game .menu {
   float: left;
-  width: 10%;
   height: 100%;
 }
 #game .dropbtn {
@@ -6985,15 +6985,7 @@ html body #gcontainer {
 #game .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
-html {
-  height: 100%;
-  width: 100%;
-}
-html body {
-  height: 100%;
-  width: 100%;
-}
-html body #gcontainer {
+html #wmap {
   height: 100%;
   width: 100%;
 }
@@ -7010,7 +7002,65 @@ html body #gcontainer {
   top: 46.6%;
   left: 2.3%;
   background-repeat: no-repeat;
-  background-size: 48% 26%;
-  width: 16%;
-  height: 51%;
+  background-size: 63% 72%;
+  width: 14%;
+  height: 19%;
+}
+#map .r2 {
+  position: absolute;
+  top: 25.6%;
+  left: 31.3%;
+  background-repeat: no-repeat;
+  background-size: 63% 72%;
+  width: 14%;
+  height: 19%;
+}
+#map .r3 {
+  position: absolute;
+  top: 40.6%;
+  left: 49.3%;
+  background-repeat: no-repeat;
+  background-size: 63% 72%;
+  width: 14%;
+  height: 19%;
+}
+#map .r4 {
+  position: absolute;
+  top: 77.6%;
+  left: 53.3%;
+  background-repeat: no-repeat;
+  background-size: 63% 72%;
+  width: 14%;
+  height: 19%;
+}
+#map .r5 {
+  position: absolute;
+  top: 15.6%;
+  left: 67.3%;
+  background-repeat: no-repeat;
+  background-size: 63% 72%;
+  width: 14%;
+  height: 19%;
+}
+#map .retrun {
+  float: left;
+  width: 10%;
+  height: 100%;
+}
+#map .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+#map .dropdown {
+  position: relative;
+  display: inline-block;
+}
+#map .world {
+  color: #c7ddef ;
+  float: left;
+  width: 30%;
 }
