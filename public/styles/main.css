@@ -6985,3 +6985,32 @@ html body #gcontainer {
 #game .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+html {
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
+}
+html body #gcontainer {
+  height: 100%;
+  width: 100%;
+}
+#map {
+  background-image: url('../images/worldmap1.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#map .r1 {
+  position: absolute;
+  top: 46.6%;
+  left: 2.3%;
+  background-repeat: no-repeat;
+  background-size: 48% 26%;
+  width: 16%;
+  height: 51%;
+}
