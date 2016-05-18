@@ -8,6 +8,10 @@ app.run(['$rootScope', function($scope) {
 
 }]);
 
+/**
+ * TODO function to Date
+ * TODO function to milliseconds
+ */
 
 app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout, $interval) {
 
@@ -16,28 +20,31 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
         $scope.game = game;
 
         for(var key in $scope.game) {
+            if($scope.game.hasOwnProperty(key)) {
 
-            if($scope.game[key].finish) {
+                if($scope.game[key].finish) {
 
-                if((new Date($scope.game[key].finish) - new Date()) <= 0 ) {
+                    if((new Date($scope.game[key].finish) - new Date()) <= 0 ) {
 
-                    $scope.game[key].level++;
-                    delete $scope.game[key].finish;
-
-                }else {
-                    console.log($scope.game[key].finish, (new Date($scope.game[key].finish)- new Date()), $scope.game[key]);
-
-                    $timeout(function() {
-                        console.log('ok');
-                        console.log($scope.game[key].level);
                         $scope.game[key].level++;
                         delete $scope.game[key].finish;
-                        _update();
-                    },
-                        new Date($scope.game[key].finish)- new Date()
-                    );
 
+                    }else {
+
+                        var timeout = function() {
+                            console.log('ok', this.key);
+                            $scope.game[this.key].level++;
+                            delete $scope.game[this.key].finish;
+                            _update();
+                        };
+
+                        timeout.key = key;
+
+                        $timeout(timeout, new Date($scope.game[key].finish)- new Date());
+
+                    }
                 }
+
             }
         }
     });
@@ -92,6 +99,10 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
         });
     };
 
+    $scope.worldMap = function() {
+        $rootScope.wMap = true;
+    };
+
     function _update() {
 
         rest.game.update({_id: $scope.game._id}, $scope.game, function() {
@@ -112,6 +123,7 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
         rest.user.get({user: $scope.log.username, pass: $scope.log.password}, function(u){
             $rootScope.user = u;
+            $rootScope.wMap = false;
         }, function() {
             $scope.err = true;
         });
@@ -150,6 +162,11 @@ app.controller('createModalCtrl', ['$scope', '$uibModalInstance', 'params' , fun
     };
 
 }]);
+app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
+
+
+
+});
 'use strict';
 
 app.service('rest', ['$resource', function($resource)  {

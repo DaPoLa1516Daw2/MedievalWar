@@ -29,7 +29,8 @@
     <body ng-app="MedievalWar" >
 
         <div ng-if="!user" ng-include="'partials/pages/login.html'" ></div>
-        <div ng-if="user" id="gcontainer" ng-include="'partials/pages/game.html'" ></div>
+        <div ng-if="user && !wMap" id="gcontainer" ng-include="'partials/pages/game.html'" ></div>
+        <div ng-if="user && wMap" id="wmap" ng-include="'partials/pages/world_map.html'" ></div>
 
     </body>
 </html>

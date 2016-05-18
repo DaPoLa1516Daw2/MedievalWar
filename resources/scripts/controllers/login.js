@@ -10,6 +10,7 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
         rest.user.get({user: $scope.log.username, pass: $scope.log.password}, function(u){
             $rootScope.user = u;
+            $rootScope.wMap = false;
         }, function() {
             $scope.err = true;
         });
