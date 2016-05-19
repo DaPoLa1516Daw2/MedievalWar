@@ -3,16 +3,22 @@
 
 app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
-    var filter = {};
-    filter.world = $rootScope.world;
+    $scope.filter = {};
+    $scope.filter.world = $rootScope.world;
 
-    rest.game.map(filter, function(m) {
-        console.log(m);
+    rest.game.map($scope.filter, function(m) {
+        $scope.world = m;
     });
 
     $scope.return = function () {
         $rootScope.wMap =false;
-    }
+    };
+
+    $scope.search = function() {
+        rest.game.map($scope.filter, function(m) {
+            $scope.world = m;
+        });
+    };
 
 
 });

@@ -16,14 +16,21 @@
         <div class="dropdownr">
             <button class="dropbtnr" ng-click="return()">Return</button>
         </div>
+
     </div>
 
+
     <div id="world">
+
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">World</span>
-            <input type="number" class="form-control" >
+
+            <span class="input-group-addon" id="basic-addon1" >World</span>
+            <input type="number" min="1" class="form-control" ng-change="search()" ng-model="filter.world">
+
         </div>
+
     </div>
+
 
 
 </div>

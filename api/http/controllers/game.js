@@ -8,7 +8,6 @@ let router = module.exports = express.Router();
 router.get('/map/:world', (req, res) => {
 
     var world = req.params.world;
-    console.log(world);
 
     Game.find({world: world}, (err, g) => {
         if(err) {
@@ -48,8 +47,6 @@ router.put('/:_id', (req, res) => {
 
     var game = req.body;
 
-    console.log('guardando', game);
-
     Game.findOne({_id: id}, (err, g) => {
 
         if(err) {
@@ -58,7 +55,6 @@ router.put('/:_id', (req, res) => {
             res.sendStatus(404);
         } else {
 
-            console.log(g);
             g = game;
 
             Game.findOneAndUpdate({_id: id}, g, (err, ga) => {

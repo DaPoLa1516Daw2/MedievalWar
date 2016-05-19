@@ -16,7 +16,7 @@ app.run(['$rootScope', function($scope) {
 
 app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout, $interval) {
 
-    var keys = [];
+    //var keys = [];
 
     rest.game.get({_id: $rootScope.user.game}, function(game){
 
@@ -36,17 +36,26 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
 
                     }else {
 
-                        keys.push(key);
-                        //var timeout = function() {
-                        //    console.log('ok', this.key);
-                        //    $scope.game[this.key].level++;
-                        //    delete $scope.game[this.key].finish;
-                        //    _update();
-                        //};
+                        //keys.push(key);
+                        //var timeout =
                         //
                         //timeout.key = key;
                         //
-                        //$timeout(timeout, new Date($scope.game[key].finish)- new Date());
+                        $timeout(function(key) {
+                            $scope.game[key].level++;
+                            delete $scope.game[key].finish;
+
+                            $scope.game[key].gold = $scope.game[key].gold + $scope.game[key].gold * 0.2;
+                            $scope.game[key].stone = $scope.game[key].stone + $scope.game[key].stone * 0.2;
+                            $scope.game[key].time = $scope.game[key].time + $scope.game[key].time * 0.2;
+                            if(key == 'goldMine' || key == 'stoneMine') {
+
+                                $scope.game[key].income = $scope.game[key].income + $scope.game[key].income * 0.2;
+
+                            }
+
+                            _update();
+                        }, new Date($scope.game[key].finish)- new Date(),false ,key);
 
                     }
                 }
@@ -54,22 +63,22 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
             }
         }
 
-        keys.forEach(function(k) {
-
-            $timeout(function() {
-                console.log('ok', k);
-                $scope.game[k].level++;
-                delete $scope.game[k].finish;
-                _update();
-
-            }, new Date($scope.game[k].finish)- new Date());
-        })
+        //keys.forEach(function(k) {
+        //
+        //    $timeout(function() {
+        //        console.log('ok', k);
+        //        $scope.game[k].level++;
+        //        delete $scope.game[k].finish;
+        //        _update();
+        //
+        //    }, new Date($scope.game[k].finish)- new Date());
+        //})
     });
 
     $interval(function() {
 
-        $scope.game.resources.gold = Math.round($scope.game.resources.gold + (($scope.game.resources.gold * 16) /100));
-        $scope.game.resources.stone =  Math.round($scope.game.resources.stone + (($scope.game.resources.stone * 16) /100));
+        $scope.game.resources.gold = Math.round($scope.game.resources.gold + (($scope.game.goldMine.income * 16) /100));
+        $scope.game.resources.stone =  Math.round($scope.game.resources.stone + (($scope.game.stoneMine.income * 16) /100));
         _update();
 
     }, 600000);
@@ -109,6 +118,16 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
             $timeout(function() {
                 $scope.game[type].level++;
                 delete $scope.game[type].finish;
+
+                $scope.game[type].gold = $scope.game[type].gold + $scope.game[type].gold * 0.2 + 50;
+                $scope.game[type].stone = $scope.game[type].stone + $scope.game[type].stone * 0.2 +50;
+                $scope.game[type].time = $scope.game[type].time + $scope.game[type].time * 0.2;
+                if(type == 'goldMine' || type == 'stoneMine') {
+
+                    $scope.game[type].income = $scope.game[type].income + $scope.game[type].income * 0.2;
+
+                }
+
                 _update();
             }, item.time);
 
@@ -183,16 +202,22 @@ app.controller('createModalCtrl', ['$scope', '$uibModalInstance', 'params' , fun
 
 app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
-    var filter = {};
-    filter.world = $rootScope.world;
+    $scope.filter = {};
+    $scope.filter.world = $rootScope.world;
 
-    rest.game.map(filter, function(m) {
-        console.log(m);
+    rest.game.map($scope.filter, function(m) {
+        $scope.world = m;
     });
 
     $scope.return = function () {
         $rootScope.wMap =false;
-    }
+    };
+
+    $scope.search = function() {
+        rest.game.map($scope.filter, function(m) {
+            $scope.world = m;
+        });
+    };
 
 
 });
