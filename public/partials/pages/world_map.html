@@ -1,6 +1,11 @@
 <div id="map" ng-controller="worldMapCtrl" >
 
-    <div class="r1" style="background-image: url('../images/worldmapcity.png')"></div>
+    <div class="r1 dropdown dropbtn"  style="background-image: url('../images/worldmapcity.png')">
+
+            <div class="dropdown-content">
+                <p>Attack</p>
+            </div>
+    </div>
     <!--<div class="r1"></div>-->
     <div class="r2" style="background-image: url('../images/worldmapcity.png')"></div>
     <div class="r3" style="background-image: url('../images/worldmapcity.png')"></div>
@@ -8,8 +13,8 @@
     <div class="r5" style="background-image: url('../images/worldmapcity.png')"></div>
 
     <div class="retrun">
-        <div class="dropdown">
-            <button class="dropbtn" ng-click="return()">Return</button>
+        <div class="dropdownr">
+            <button class="dropbtnr" ng-click="return()">Return</button>
         </div>
     </div>
 

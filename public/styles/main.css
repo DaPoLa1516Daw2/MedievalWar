@@ -7007,13 +7007,13 @@ html #wmap {
   position: relative;
 }
 #map .r1 {
-  position: absolute;
-  top: 46.6%;
-  left: 2.3%;
-  background-repeat: no-repeat;
-  background-size: 63% 72%;
-  width: 14%;
-  height: 19%;
+  position: absolute !important;
+  top: 46.6% !important;
+  left: 2.3% !important;
+  background-repeat: no-repeat !important;
+  background-size: 63% 72% !important;
+  width: 14% !important;
+  height: 19% !important;
 }
 #map .r2 {
   position: absolute;
@@ -7056,7 +7056,7 @@ html #wmap {
   width: 10%;
   height: 100%;
 }
-#map .dropbtn {
+#map .dropbtnr {
   background-color: #4CAF50;
   color: white;
   padding: 16px;
@@ -7064,11 +7064,41 @@ html #wmap {
   border: none;
   cursor: pointer;
 }
-#map .dropdown {
+#map .dropdownr {
   position: relative;
   display: inline-block;
 }
 #map #world {
   float: left;
   width: 30%;
+}
+#map .dropbtn {
+  font-size: 16px;
+  cursor: pointer;
+}
+#map .dropdown {
+  position: relative;
+  display: inline-block;
+}
+#map .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+#map .dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+#map .dropdown-content p:hover {
+  background-color: #f1f1f1;
+}
+#map .dropdown:hover .dropdown-content {
+  display: block;
+}
+#map .dropdown:hover .dropbtn {
+  background-color: #b92c28;
 }
