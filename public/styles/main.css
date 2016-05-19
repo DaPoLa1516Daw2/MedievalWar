@@ -6897,6 +6897,15 @@ html body #gcontainer {
   width: 97%;
   height: 97%;
 }
+#game .wallbuild {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  top: 0.0%;
+  left: 1.1%;
+  width: 97%;
+  height: 97%;
+}
 #game .stoneMine {
   position: absolute;
   background-repeat: no-repeat;
@@ -7059,8 +7068,7 @@ html #wmap {
   position: relative;
   display: inline-block;
 }
-#map .world {
-  color: #c7ddef ;
+#map #world {
   float: left;
   width: 30%;
 }
