@@ -1,24 +1,31 @@
 <div id="map" ng-controller="worldMapCtrl" >
 
-    <div class="r1" style="background-image: url('../images/worldmapcity.png')"></div>
-    <!--<div class="r1"></div>-->
-    <div class="r2" style="background-image: url('../images/worldmapcity.png')"></div>
-    <div class="r3" style="background-image: url('../images/worldmapcity.png')"></div>
-    <div class="r4" style="background-image: url('../images/worldmapcity.png')"></div>
-    <div class="r5" style="background-image: url('../images/worldmapcity.png')"></div>
+    <div class="r1" style="background-image: url('../images/worldmapcity.png')" ng-if="world[0]"></div>
+    <div class="r2" style="background-image: url('../images/worldmapcity.png')" ng-if="world[1]"></div>
+    <div class="r3" style="background-image: url('../images/worldmapcity.png')" ng-if="world[2]"></div>
+    <div class="r4" style="background-image: url('../images/worldmapcity.png')" ng-if="world[3]"></div>
+    <div class="r5" style="background-image: url('../images/worldmapcity.png')" ng-if="world[4]"></div>
 
     <div class="retrun">
+
         <div class="dropdown">
             <button class="dropbtn" ng-click="return()">Return</button>
         </div>
+
     </div>
 
+
     <div id="world">
+
         <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">World</span>
-            <input type="number" class="form-control" >
+
+            <span class="input-group-addon" id="basic-addon1" >World</span>
+            <input type="number" min="1" class="form-control" ng-change="search()" ng-model="filter.world">
+
         </div>
+
     </div>
+
 
 
 </div>
