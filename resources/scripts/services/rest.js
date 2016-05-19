@@ -7,7 +7,7 @@ app.service('rest', ['$resource', function($resource)  {
     });
 
     var game = $resource('/game/:_id', {_id: "@_id"}, {
-        delete: {method:'DELETE'},
+        map: { method:"GET", url:"/game/map/:world", isArray: true},
         update: {method:'PUT'}
 
     });

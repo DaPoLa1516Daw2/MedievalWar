@@ -1,3 +1,4 @@
+'use strict';
 /**
  * TODO function to Date
  * TODO function to milliseconds
@@ -5,9 +6,13 @@
 
 app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout, $interval) {
 
+    var keys = [];
 
     rest.game.get({_id: $rootScope.user.game}, function(game){
+
         $scope.game = game;
+        $rootScope.world = game.world;
+        $rootScope.region = game.region;
 
         for(var key in $scope.game) {
             if($scope.game.hasOwnProperty(key)) {
@@ -21,22 +26,34 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
 
                     }else {
 
-                        var timeout = function() {
-                            console.log('ok', this.key);
-                            $scope.game[this.key].level++;
-                            delete $scope.game[this.key].finish;
-                            _update();
-                        };
-
-                        timeout.key = key;
-
-                        $timeout(timeout, new Date($scope.game[key].finish)- new Date());
+                        keys.push(key);
+                        //var timeout = function() {
+                        //    console.log('ok', this.key);
+                        //    $scope.game[this.key].level++;
+                        //    delete $scope.game[this.key].finish;
+                        //    _update();
+                        //};
+                        //
+                        //timeout.key = key;
+                        //
+                        //$timeout(timeout, new Date($scope.game[key].finish)- new Date());
 
                     }
                 }
 
             }
         }
+
+        keys.forEach(function(k) {
+
+            $timeout(function() {
+                console.log('ok', k);
+                $scope.game[k].level++;
+                delete $scope.game[k].finish;
+                _update();
+
+            }, new Date($scope.game[k].finish)- new Date());
+        })
     });
 
     $interval(function() {

@@ -5,6 +5,24 @@ const Game = require('../../db/models/game');
 
 let router = module.exports = express.Router();
 
+router.get('/map/:world', (req, res) => {
+
+    var world = req.params.world;
+    console.log(world);
+
+    Game.find({world: world}, (err, g) => {
+        if(err) {
+            console.error(err);
+            res.sendStatus(500);
+        }else if(!g) {
+            res.sendStatus(404);
+        } else {
+            console.log(g);
+            res.json(g);
+        }
+    });
+});
+
 router.get('/:_id', (req , res) =>{
 
     var id = req.params._id;

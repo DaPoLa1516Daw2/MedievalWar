@@ -3,7 +3,6 @@
 
 app.controller('createModalCtrl', ['$scope', '$uibModalInstance', 'params' , function($scope, $uibModalInstance, params) {
 
-    console.log(params);
     $scope.item = params.item;
 
     var gold = params.gold;
