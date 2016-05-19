@@ -123,7 +123,6 @@ router.get('/:user/:pass', (req , res) =>{
         } else if(!u) {
             res.sendStatus(404);
         } else {
-            console.log(u.password, pass);
             if(u.password == pass) {
                 res.json(u);
             } else {
