@@ -77,6 +77,17 @@
         </div>
     </div>
 
+    <div class="army" ng-if="game.barracks.level > 0">
+        <div class="dropdown" style="float:right;">
+            <button class="dropbtn">Army</button>
+            <div class="dropdown-content " style="right: 0">
+                <p ng-click="create('warrior')" >Warrior</p>
+                <p ng-click="create('archer')" >Archer</p>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>
 
