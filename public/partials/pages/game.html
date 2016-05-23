@@ -87,7 +87,7 @@
             <button class="dropbtn">Army</button>
             <div class="dropdown-content " style="right: 0">
                 <p ng-click="create('warrior')" >Warrior</p>
-                <p ng-click="create('archer')" >Archer</p>
+                <p ng-click="create('archer')" ng-if="game.barracks.level > 1" >Archer</p>
             </div>
         </div>
     </div>

@@ -14,15 +14,12 @@ app.run(['$rootScope', function($scope) {
  * TODO function to milliseconds
  */
 
-app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeout, $interval) {
+app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeout, $interval) {
 
     //var keys = [];
 
     if($rootScope.attacked) {
-        console.log('ok', $rootScope.gold, $rootScope.stone);
-        $scope.game.resources.gold = $scope.game.resources.gold + $rootScope.gold;
-        $scope.game.resources.stone = $scope.game.resources.stone + $rootScope.stone;
-        //$scope.$apply();
+        $scope.game = $rootScope.game;
         _update();
         delete $rootScope.attacked;
     }
@@ -101,12 +98,14 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
             backdrop: 'static',
             resolve: {
                 params:function() {
+
                     var item = $scope.game[type];
                     var partida = {};
                     item.type = type;
                     partida.item = item;
                     partida.gold = $scope.game.resources.gold;
                     partida.stone = $scope.game.resources.stone;
+
                     return partida;
                 }
             },
@@ -117,24 +116,37 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
             delete  item.type;
 
             item.finish = new Date() - new Date(0) + item.time;
+
             $scope.game[type] = item;
+
+
 
             $scope.game.resources.gold = $scope.game.resources.gold - item.gold;
             $scope.game.resources.stone = $scope.game.resources.stone - item.stone;
             _update();
 
             $timeout(function() {
-                $scope.game[type].level++;
+
+                if(type == 'warrior' || type == 'archer') {
+                    $scope.game[type].number++;
+                }else {
+                    $scope.game[type].level++;
+                }
+
                 delete $scope.game[type].finish;
 
-                $scope.game[type].gold = $scope.game[type].gold + $scope.game[type].gold * 0.2 + 50;
-                $scope.game[type].stone = $scope.game[type].stone + $scope.game[type].stone * 0.2 +50;
-                $scope.game[type].time = $scope.game[type].time + $scope.game[type].time * 0.2;
-                if(type == 'goldMine' || type == 'stoneMine') {
+                if (type != 'warrior' || type != 'archer') {
 
-                    $scope.game[type].income = $scope.game[type].income + $scope.game[type].income * 0.2;
+                    $scope.game[type].gold = $scope.game[type].gold + $scope.game[type].gold * 0.2 + 50;
+                    $scope.game[type].stone = $scope.game[type].stone + $scope.game[type].stone * 0.2 +50;
+                    $scope.game[type].time = $scope.game[type].time + $scope.game[type].time * 0.2;
+                    if(type == 'goldMine' || type == 'stoneMine') {
 
+                        $scope.game[type].income = $scope.game[type].income + $scope.game[type].income * 0.2;
+
+                    }
                 }
+
 
                 _update();
             }, item.time);
@@ -149,6 +161,18 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
     };
 
     function _update() {
+
+        if( $scope.game.tower.level > 0 && $scope.game.wall.level > 0) {
+            $scope.game.defense = $scope.game.tower.defense + $scope.game.wall.defense;
+        }else if($scope.game.tower.level > 0 && $scope.game.wall.level == 0) {
+            $scope.game.defense = $scope.game.tower.defense
+        } else if($scope.game.tower.level == 0 && $scope.game.wall.level > 0) {
+            $scope.game.defense =  $scope.game.wall.defense;
+        } else {
+            $scope.game.defense = 0;
+        }
+
+        $scope.game.power = $scope.game.warrior.attack * $scope.game.warrior.number +  $scope.game.archer.attack * $scope.game.archer.number;
 
         rest.game.update({_id: $scope.game._id}, $scope.game, function() {
         });
@@ -232,11 +256,17 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
     $scope.attack = function(game) {
 
-        game.attacks.gold = game.attacks.gold +500;
-        game.attacks.stone = game.attacks.stone +500;
+        var resources = $rootScope.game.power - game.defense;
 
-        $rootScope.gold = $rootScope.gold +500;
-        $rootScope.stone = $rootScope.stone +500;
+        if (resource < 0) {
+            resources = 0;
+        }
+
+        game.attacks.gold = game.attacks.gold +resources;
+        game.attacks.stone = game.attacks.stone +resources;
+
+        $rootScope.game.resources.gold =  $rootScope.game.resources.gold +resources;
+        $rootScope.game.resources.stone = $rootScope.game.resources.stone +resources;
         $rootScope.attacked = true;
 
         rest.game.update({_id: game._id}, game, function() {

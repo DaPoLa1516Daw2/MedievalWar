@@ -24,11 +24,17 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
     $scope.attack = function(game) {
 
-        game.attacks.gold = game.attacks.gold +500;
-        game.attacks.stone = game.attacks.stone +500;
+        var resources = $rootScope.game.power - game.defense;
 
-        $rootScope.gold = $rootScope.gold +500;
-        $rootScope.stone = $rootScope.stone +500;
+        if (resource < 0) {
+            resources = 0;
+        }
+
+        game.attacks.gold = game.attacks.gold +resources;
+        game.attacks.stone = game.attacks.stone +resources;
+
+        $rootScope.game.resources.gold =  $rootScope.game.resources.gold +resources;
+        $rootScope.game.resources.stone = $rootScope.game.resources.stone +resources;
         $rootScope.attacked = true;
 
         rest.game.update({_id: game._id}, game, function() {

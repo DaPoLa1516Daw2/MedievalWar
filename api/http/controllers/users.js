@@ -54,7 +54,20 @@ const g = {
         defense: 100,
         time: 600000
     },
-    army: {},
+    warrior: {
+        number: 0,
+        gold: 50,
+        stone: 0,
+        attack: 5,
+        time: 30000
+    },
+    archer: {
+        number: 0,
+        gold: 100,
+        stone: 20,
+        attack: 15,
+        time: 120000
+    },
     resources: {
         gold: 1000,
         stone: 600

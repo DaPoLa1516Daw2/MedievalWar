@@ -7,6 +7,7 @@ const Mine = require('../schemas/mine');
 const Wall = require('../schemas/wall');
 const Barracks = require('../schemas/barracks');
 const Tower = require('../schemas/tower');
+const Soliders = require('../schemas/soliders');
 
 
 let schema = new mongoose.Schema({
@@ -16,11 +17,13 @@ let schema = new mongoose.Schema({
     wall: {type: Wall},
     barracks: {type: Barracks},
     tower: {type: Tower},
-    army: {type: Object},
+    warrior: {type: Soliders},
+    archer: {type: Soliders},
     resources: {type: Object},
     attacks: {type: Object},
     world: {type: Number},
-    country: {type: Number}
+    country: {type: Number},
+    defense: {type: Number}
 
 });
 
