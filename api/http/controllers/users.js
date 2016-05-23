@@ -58,6 +58,10 @@ const g = {
     resources: {
         gold: 1000,
         stone: 600
+    },
+    attacks: {
+        gold: 0,
+        stone:0
     }
 };
 

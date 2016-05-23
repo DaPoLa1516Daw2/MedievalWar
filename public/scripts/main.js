@@ -18,6 +18,15 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
 
     //var keys = [];
 
+    if($rootScope.attacked) {
+        console.log('ok', $rootScope.gold, $rootScope.stone);
+        $scope.game.resources.gold = $scope.game.resources.gold + $rootScope.gold;
+        $scope.game.resources.stone = $scope.game.resources.stone + $rootScope.stone;
+        //$scope.$apply();
+        _update();
+        delete $rootScope.attacked;
+    }
+
     rest.game.get({_id: $rootScope.user.game}, function(game){
 
         $scope.game = game;
@@ -36,11 +45,7 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
 
                     }else {
 
-                        //keys.push(key);
-                        //var timeout =
-                        //
-                        //timeout.key = key;
-                        //
+
                         $timeout(function(key) {
                             $scope.game[key].level++;
                             delete $scope.game[key].finish;
@@ -63,16 +68,19 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
             }
         }
 
-        //keys.forEach(function(k) {
-        //
-        //    $timeout(function() {
-        //        console.log('ok', k);
-        //        $scope.game[k].level++;
-        //        delete $scope.game[k].finish;
-        //        _update();
-        //
-        //    }, new Date($scope.game[k].finish)- new Date());
-        //})
+        $scope.game.resources.gold = $scope.game.resources.gold - $scope.game.attacks.gold;
+        $scope.game.resources.stone = $scope.game.resources.gold - $scope.game.attacks.stone;
+        $scope.game.attacks.gold = 0;
+        $scope.game.attacks.stone = 0;
+
+        if($scope.game.resources.gold < 0) {
+            $scope.game.resources.gold = 0;
+        }
+
+        if($scope.game.resources.stone < 0) {
+            $scope.game.resources.stone = 0;
+        }
+
     });
 
     $interval(function() {
@@ -136,6 +144,7 @@ app.controller('gameCtrl', function($scope, rest, $rootScope, $uibModal, $timeou
     };
 
     $scope.worldMap = function() {
+        $rootScope.game = $scope.game;
         $rootScope.wMap = true;
     };
 
@@ -204,6 +213,8 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
     $scope.filter = {};
     $scope.filter.world = $rootScope.world;
+    $rootScope.stone = 0;
+    $rootScope.gold = 0;
 
     rest.game.map($scope.filter, function(m) {
         $scope.world = m;
@@ -218,6 +229,21 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
             $scope.world = m;
         });
     };
+
+    $scope.attack = function(game) {
+
+        game.attacks.gold = game.attacks.gold +500;
+        game.attacks.stone = game.attacks.stone +500;
+
+        $rootScope.gold = $rootScope.gold +500;
+        $rootScope.stone = $rootScope.stone +500;
+        $rootScope.attacked = true;
+
+        rest.game.update({_id: game._id}, game, function() {
+        });
+
+    }
+
 
 
 });

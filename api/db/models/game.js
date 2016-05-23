@@ -18,6 +18,7 @@ let schema = new mongoose.Schema({
     tower: {type: Tower},
     army: {type: Object},
     resources: {type: Object},
+    attacks: {type: Object},
     world: {type: Number},
     country: {type: Number}
 

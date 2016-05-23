@@ -1,31 +1,31 @@
 <div id="map" ng-controller="worldMapCtrl" >
 
-    <div class="r1 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')">
+    <div class="r1 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')" ng-if="world[0]">
 
             <div class="dropdown-content">
-                <p>Attack</p>
+                <p ng-click="attack(world[0])">Attack</p>
             </div>
     </div>
     <!--<div class="r1"></div>-->
-    <div class="r2 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')">
+    <div class="r2 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')" ng-if="world[1]">
         <div class="dropdown-content">
-            <p>Attack</p>
+            <p ng-click="attack(world[1])">Attack</p>
         </div>
     </div>
-    <div class="r3 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')">
+    <div class="r3 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')" ng-if="world[2]">
         <div class="dropdown-content">
-            <p>Attack</p>
+            <p ng-click="attack(world[2])">Attack</p>
         </div>
 
     </div>
-    <div class="r4 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')">
+    <div class="r4 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')" ng-if="world[3]">
         <div class="dropdown-content">
-            <p>Attack</p>
+            <p ng-click="attack(world[3])">Attack</p>
         </div>
     </div>
-    <div class="r5 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')">
+    <div class="r5 dropdown dropbtn" style="background-image: url('../images/worldmapcity.png')" ng-if="world[4]">
         <div class="dropdown-content">
-            <p>Attack</p>
+            <p ng-click="attack(world[4])">Attack</p>
         </div>
     </div>
 
