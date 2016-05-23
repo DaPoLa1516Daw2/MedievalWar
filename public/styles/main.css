@@ -6956,17 +6956,39 @@ html body #gcontainer {
   color: #000000;
   font-size: x-large;
 }
-#game .trops {
+#game .tropsw {
   position: absolute;
-  left: 60%;
-  width: 15%;
+  left: 40%;
+  top: 90%;
+  width: 10%;
   height: 10%;
   background-color: #f7f7f7;
-  opacity: 0.5;
+  opacity: 0.9;
   border: solid #000;
-  text-align: left;
+  text-align: center;
+  background-size: 20% 40%;
+  background-repeat: no-repeat;
 }
-#game div.trops p {
+#game .tropsa {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  width: 10%;
+  height: 10%;
+  background-size: 20% 40%;
+  background-color: #f7f7f7;
+  opacity: 0.9;
+  border: solid #000;
+  text-align: center;
+  background-repeat: no-repeat;
+}
+#game div.tropsa p {
+  margin: 2%;
+  font-weight: bold;
+  color: #000000;
+  font-size: medium;
+}
+#game div.tropsw p {
   margin: 2%;
   font-weight: bold;
   color: #000000;

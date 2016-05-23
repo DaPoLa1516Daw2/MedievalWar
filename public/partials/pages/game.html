@@ -22,7 +22,6 @@
     <div class="forge" style="background-image: url('../images/gifbuild.gif')" ng-if="game.forge.finish" ></div>
 
 
-
     <div class="tavern" style="background-image: url('../images/tavern.png')" ng-click="create('tavern')" ng-if="game.tavern.level > 0" ></div>
     <div class="tavern" ng-click="create('tavern')" ng-if="game.tavern.level == 0" ></div>
     <div class="tavern" style="background-image: url('../images/gifbuild.gif')" ng-if="game.tavern.finish" ></div>
@@ -62,8 +61,10 @@
         <p>{{game.resources.stone}}</p>
     </div>
 
-    <div class="trops">
+    <div class="tropsw" style="background-image: url('../images/sword.png')">
         <p>Warriors</p>
+    </div>
+    <div class="tropsa" style="background-image: url('../images/arch.png')">
         <p>Archer</p>
     </div>
 
