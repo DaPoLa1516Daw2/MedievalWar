@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
     number: {type: Number},
+    attack: {type: Number},
     gold: {type: Number},
     stone: {type: Number},
     time: {type: Number},

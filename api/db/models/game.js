@@ -23,7 +23,8 @@ let schema = new mongoose.Schema({
     attacks: {type: Object},
     world: {type: Number},
     country: {type: Number},
-    defense: {type: Number}
+    defense: {type: Number},
+    power: {type: Number}
 
 });
 

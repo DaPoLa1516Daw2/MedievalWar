@@ -125,7 +125,7 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
 
                 delete $scope.game[type].finish;
 
-                if (type != 'warrior' || type != 'archer') {
+                if (type != 'warrior' && type != 'archer') {
 
                     $scope.game[type].gold = $scope.game[type].gold + $scope.game[type].gold * 0.2 + 50;
                     $scope.game[type].stone = $scope.game[type].stone + $scope.game[type].stone * 0.2 +50;
