@@ -7057,6 +7057,9 @@ html #wmap {
   background-size: 63% 72% !important;
   width: 14% !important;
   height: 19% !important;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-size: large;
 }
 #map .r2 {
   position: absolute !important;
@@ -7066,6 +7069,9 @@ html #wmap {
   background-size: 63% 72% !important;
   width: 14% !important;
   height: 19% !important;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-size: large;
 }
 #map .r3 {
   position: absolute !important;
@@ -7075,6 +7081,9 @@ html #wmap {
   background-size: 63% 72% !important;
   width: 14% !important;
   height: 19% !important;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-size: large;
 }
 #map .r4 {
   position: absolute !important;
@@ -7083,7 +7092,10 @@ html #wmap {
   background-repeat: no-repeat !important;
   background-size: 63% 72% !important;
   width: 14%!important;
-  height: 19%;
+  height: 19%!important;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-size: large;
 }
 #map .r5 {
   position: absolute !important;
@@ -7093,6 +7105,9 @@ html #wmap {
   background-size: 63% 72% !important;
   width: 14% !important;
   height: 19% !important;
+  font-weight: bold;
+  color: #f8f8f8;
+  font-size: large;
 }
 #map .retrun {
   float: left;
