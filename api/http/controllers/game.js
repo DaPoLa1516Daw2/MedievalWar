@@ -16,7 +16,6 @@ router.get('/map/:world', (req, res) => {
         }else if(!g) {
             res.sendStatus(404);
         } else {
-            console.log(g);
             res.json(g);
         }
     });

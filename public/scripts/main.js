@@ -47,12 +47,12 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
                             $scope.game[key].level++;
                             delete $scope.game[key].finish;
 
-                            $scope.game[key].gold = $scope.game[key].gold + $scope.game[key].gold * 0.2;
-                            $scope.game[key].stone = $scope.game[key].stone + $scope.game[key].stone * 0.2;
-                            $scope.game[key].time = $scope.game[key].time + $scope.game[key].time * 0.2;
+                            $scope.game[key].gold = Math.round($scope.game[key].gold + $scope.game[key].gold * 0.2);
+                            $scope.game[key].stone = Math.round($scope.game[key].stone + $scope.game[key].stone * 0.2);
+                            $scope.game[key].time = Math.round($scope.game[key].time + $scope.game[key].time * 0.2);
                             if(key == 'goldMine' || key == 'stoneMine') {
 
-                                $scope.game[key].income = $scope.game[key].income + $scope.game[key].income * 0.2;
+                                $scope.game[key].income = Math.round($scope.game[key].income + $scope.game[key].income * 0.2);
 
                             }
 
@@ -66,7 +66,7 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
         }
 
         $scope.game.resources.gold = $scope.game.resources.gold - $scope.game.attacks.gold;
-        $scope.game.resources.stone = $scope.game.resources.gold - $scope.game.attacks.stone;
+        $scope.game.resources.stone = $scope.game.resources.stone - $scope.game.attacks.stone;
         $scope.game.attacks.gold = 0;
         $scope.game.attacks.stone = 0;
 
@@ -137,12 +137,12 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
 
                 if (type != 'warrior' && type != 'archer') {
 
-                    $scope.game[type].gold = $scope.game[type].gold + $scope.game[type].gold * 0.2 + 50;
-                    $scope.game[type].stone = $scope.game[type].stone + $scope.game[type].stone * 0.2 +50;
-                    $scope.game[type].time = $scope.game[type].time + $scope.game[type].time * 0.2;
+                    $scope.game[type].gold = Math.round(($scope.game[type].gold + $scope.game[type].gold * 0.2) + 50);
+                    $scope.game[type].stone = Math.round(($scope.game[type].stone + $scope.game[type].stone * 0.2) +50);
+                    $scope.game[type].time = Math.round($scope.game[type].time + $scope.game[type].time * 0.2);
                     if(type == 'goldMine' || type == 'stoneMine') {
 
-                        $scope.game[type].income = $scope.game[type].income + $scope.game[type].income * 0.2;
+                        $scope.game[type].income = Math.round($scope.game[type].income + $scope.game[type].income * 0.2);
 
                     }
                 }
@@ -239,10 +239,11 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
     $scope.filter.world = $rootScope.world;
     $rootScope.stone = 0;
     $rootScope.gold = 0;
+    $scope.world = {};
 
-    rest.game.map($scope.filter, function(m) {
-        $scope.world = m;
-    });
+
+
+
 
     $scope.return = function () {
         $rootScope.wMap =false;
@@ -250,15 +251,35 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
     $scope.search = function() {
         rest.game.map($scope.filter, function(m) {
-            $scope.world = m;
+
+            $scope.world.game = m;
+            $scope.world.users = [];
+
+
+
+            rest.user.getAll(function(users) {
+
+                $scope.world.game.forEach(function(w) {
+
+                    users.forEach(function(u){
+
+                        if(w._id == u.game) {
+                            $scope.world.users.push(u);
+                        }
+                    });
+
+                });
+            });
         });
     };
+
+    $scope.search();
 
     $scope.attack = function(game) {
 
         var resources = $rootScope.game.power - game.defense;
 
-        if (resource < 0) {
+        if (resources < 0) {
             resources = 0;
         }
 
@@ -269,6 +290,7 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
         $rootScope.game.resources.stone = $rootScope.game.resources.stone +resources;
         $rootScope.attacked = true;
 
+        console.log($rootScope.game.resources);
         rest.game.update({_id: game._id}, game, function() {
         });
 
@@ -282,7 +304,7 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 app.service('rest', ['$resource', function($resource)  {
 
     var user = $resource('/user/:user/:pass', {user: '@user', pass: "@pass"}, {
-
+        getAll: {method:"GET", url:"/user/all", isArray: true}
     });
 
     var game = $resource('/game/:_id', {_id: "@_id"}, {

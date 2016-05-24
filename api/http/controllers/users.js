@@ -72,6 +72,8 @@ const g = {
         gold: 1000,
         stone: 600
     },
+    defense: 0,
+    power: 0,
     attacks: {
         gold: 0,
         stone:0
@@ -85,7 +87,6 @@ router.post('/', (req, res) => {
 
     User.create(user, (err, user) => {
        if(err) {
-           console.log(err);
            res.sendStatus(500);
        } else if(!user) {
            res.sendStatus(404);
@@ -96,7 +97,6 @@ router.post('/', (req, res) => {
 
            Game.create(g, (err, game) => {
                if(err) {
-                   console.log(err);
                    res.sendStatus(500);
                } else if(!game) {
                    res.sendStatus(404);
@@ -106,7 +106,6 @@ router.post('/', (req, res) => {
 
                    User.findByIdAndUpdate(user._id, user, (err, u) => {
                        if(err) {
-                           console.log(err);
                            res.sendStatus(500);
                        } else if(!u) {
                            res.sendStatus(404);
@@ -125,6 +124,21 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/all', (req, res) => {
+
+    User.find({}, (err, users) => {
+        if(err) {
+            console.log(err);
+            res.sendStatus(500);
+        }else if(!users){
+            res.sendStatus(404);
+        }else {
+            res.json(users);
+        }
+    })
+
+});
+
 router.get('/:user/:pass', (req , res) =>{
 
     var user = req.params.user;
@@ -135,7 +149,6 @@ router.get('/:user/:pass', (req , res) =>{
 
     User.findOne({username: user}, projection ,(err, u) => {
         if(err) {
-            console.log(err);
             res.sendStatus(500);
         } else if(!u) {
             res.sendStatus(404);
