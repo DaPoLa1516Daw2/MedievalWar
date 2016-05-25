@@ -12,8 +12,12 @@
 
 
         <div class="col-sm-8" >
-            <p>{{item.gold}}</p>
-            <p>{{item.stone}}</p>
+            <p>Level: {{item.level}}</p>
+            <p>Gold: {{item.gold}}</p>
+            <p>Stone: {{item.stone}}</p>
+            <p ng-if="item.type == 'goldMine'" >Gold Earn: {{item.income}}</p>
+            <p ng-if="item.type == 'stoneMine'" >Stone Earn: {{item.income}}</p>
+            <p>Time: {{(item.time/1000)/60}} min</p>
         </div>
 
     </div>

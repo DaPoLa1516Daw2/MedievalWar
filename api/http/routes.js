@@ -6,7 +6,6 @@ const deleteAngularPropsMdlw = require('./middlewares/delete_angular_props');
 const indexCtrl = require('./controllers');
 
 
-//const clientCtrl = require('./controllers/client');
 const userCtrl = require('./controllers/users');
 const gameCtrl = require('./controllers/game');
 

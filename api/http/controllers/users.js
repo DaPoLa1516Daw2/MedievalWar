@@ -47,6 +47,42 @@ const g = {
         stone: 150,
         time: 300000
     },
+    cavalry: {
+        level: 0,
+        gold: 700,
+        stone: 500,
+        time: 3600000
+    },
+    church: {
+        level: 0,
+        gold: 1000,
+        stone: 800,
+        time: 14400000
+    },
+    forge: {
+        level: 0,
+        gold: 400,
+        stone: 400,
+        time: 3600000
+    },
+    tavern: {
+        level: 0,
+        gold: 550,
+        stone: 300,
+        time: 1200000
+    },
+    warehouse: {
+        level: 0,
+        gold: 1000,
+        stone: 740,
+        time: 7200000
+    },
+    market: {
+        level: 0,
+        gold: 1000,
+        stone: 740,
+        time: 7200000
+    },
     tower: {
         level: 0,
         gold: 600,
