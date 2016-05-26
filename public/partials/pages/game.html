@@ -5,13 +5,14 @@
     <div class="wall"  ng-if="game.wall.finish" ></div>
     <div class="wallbuild" style="background-image: url('../images/gifbuild.gif')" ng-if="game.wall.finish" ></div>
 
+    <div class="church" style="background-image: url('../images/church.png')" ng-click="create('church')" ng-if="game.church.level > 0" ></div>
+    <div class="church" ng-click="create('church')" ng-if="game.church.level == 0" ></div>
+    <div class="church" style="background-image: url('../images/gifbuild.gif')" ng-if="game.church.finish" ></div>
+
     <div class="castle" style="background-image: url('../images/castle.png')" ng-click="create('castle')" ng-if="game.castle.level > 0" ></div>
     <div class="castle" ng-click="create('castle')" ng-if="game.castle.level == 0" ></div>
     <div class="castle" style="background-image: url('../images/gifbuild.gif')" ng-if="game.castle.finish" ></div>
 
-    <div class="church" style="background-image: url('../images/church.png')" ng-click="create('church')" ng-if="game.church.level > 0" ></div>
-    <div class="church" ng-click="create('church')" ng-if="game.church.level == 0" ></div>
-    <div class="church" style="background-image: url('../images/gifbuild.gif')" ng-if="game.church.finish" ></div>
 
     <div class="barracks" style="background-image: url('../images/barracks.png')" ng-click="create('barracks')" ng-if="game.barracks.level > 0" ></div>
     <div class="barracks" ng-click="create('barracks')" ng-if="game.barracks.level == 0" ></div>
