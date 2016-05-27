@@ -6,6 +6,9 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
     $scope.reg = {};
     $scope.log = {};
 
+    /**
+     * get the user from DB
+     */
     $scope.login = function() {
 
         rest.user.get({user: $scope.log.username, pass: $scope.log.password}, function(u){
@@ -17,6 +20,9 @@ app.controller('loginCtrl', ['$scope', 'rest', '$rootScope', function($scope, re
 
     };
 
+    /**
+     * add new user to DB
+     */
     $scope.register = function() {
 
         rest.user.save($scope.reg, function() {

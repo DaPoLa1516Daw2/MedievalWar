@@ -13,6 +13,10 @@ var country = 1;
 
 _count();
 
+/**
+ * crate new game
+ * @type {{castle: {level: number, gold: number, stone: number, time: number}, goldMine: {level: number, gold: number, stone: number, income: number, time: number}, stoneMine: {level: number, gold: number, stone: number, income: number, time: number}, wall: {level: number, gold: number, stone: number, defense: number, time: number}, barracks: {level: number, gold: number, stone: number, time: number}, cavalry: {level: number, gold: number, stone: number, time: number}, church: {level: number, gold: number, stone: number, time: number}, forge: {level: number, gold: number, stone: number, time: number}, tavern: {level: number, gold: number, stone: number, time: number}, warehouse: {level: number, gold: number, stone: number, time: number}, market: {level: number, gold: number, stone: number, time: number}, tower: {level: number, gold: number, stone: number, defense: number, time: number}, warrior: {number: number, gold: number, stone: number, attack: number, time: number}, archer: {number: number, gold: number, stone: number, attack: number, time: number}, resources: {gold: number, stone: number}, defense: number, power: number, attacks: {gold: number, stone: number}}}
+ */
 const g = {
     castle: {
         level: 0,
@@ -116,6 +120,9 @@ const g = {
     }
 };
 
+/**
+ * crate new user and new game
+ */
 router.post('/', (req, res) => {
 
     let user = req.body;
@@ -160,6 +167,9 @@ router.post('/', (req, res) => {
     });
 });
 
+/**
+ * get all users
+ */
 router.get('/all', (req, res) => {
 
     User.find({}, (err, users) => {
@@ -175,6 +185,9 @@ router.get('/all', (req, res) => {
 
 });
 
+/**
+ * get user by user and password
+ */
 router.get('/:user/:pass', (req , res) =>{
 
     var user = req.params.user;
@@ -199,6 +212,10 @@ router.get('/:user/:pass', (req , res) =>{
 
 });
 
+/**
+ * count how many worlds and countries are in bd
+ * @private
+ */
 function  _count () {
     User.count({}, function(err, n) {
         

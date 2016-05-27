@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * add the fields createdDate and updatedDate in the schemas, and in save and upadtes
+ * @param schema
+ * @param options
+ */
+
 module.exports = (schema, options) => {
 
     schema.add({

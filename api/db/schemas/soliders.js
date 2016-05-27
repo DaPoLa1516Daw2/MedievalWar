@@ -2,6 +2,9 @@
 
 const mongoose = require('mongoose');
 
+/**
+ * schema for soldiers object
+ */
 let schema = new mongoose.Schema({
     number: {type: Number},
     attack: {type: Number},

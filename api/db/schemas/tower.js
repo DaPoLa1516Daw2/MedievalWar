@@ -2,6 +2,9 @@
 
 const mongoose = require('mongoose');
 
+/**
+ * schema for tower object
+ */
 let schema = new mongoose.Schema({
     level: {type: Number},
     defense: {type: Number},

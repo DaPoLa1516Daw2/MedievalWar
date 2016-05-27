@@ -8,14 +8,15 @@ const Wall = require('../schemas/wall');
 const buildingArmy = require('../schemas/building_army');
 const Tower = require('../schemas/tower');
 const Soliders = require('../schemas/soliders');
-
 const Church = require('../schemas/church');
 const Forge = require('../schemas/forge');
 const Tavern = require('../schemas/tavern');
 const Warehouse = require('../schemas/warehouse');
 const Market = require('../schemas/market');
 
-
+/**
+ * Game schema for mongoose
+ */
 let schema = new mongoose.Schema({
     castle: {type: Castle},
     goldMine: {type: Mine},

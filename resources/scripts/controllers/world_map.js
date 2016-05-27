@@ -9,21 +9,22 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
     $rootScope.gold = 0;
     $scope.world = {};
 
-
-
-
-
+    /**
+     * return to the village
+     */
     $scope.return = function () {
         $rootScope.wMap =false;
     };
 
+    /**
+     * search the villages by the world in the input field
+     * and set the user name below
+     */
     $scope.search = function() {
         rest.game.map($scope.filter, function(m) {
 
             $scope.world.game = m;
             $scope.world.users = [];
-
-
 
             rest.user.getAll(function(users) {
 
@@ -43,6 +44,10 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
 
     $scope.search();
 
+    /**
+     * attack the village
+     * @param game represents the village you are attacking
+     */
     $scope.attack = function(game) {
 
         var resources = $rootScope.game.power - game.defense;
@@ -58,7 +63,6 @@ app.controller('worldMapCtrl', function($scope, rest, $rootScope) {
         $rootScope.game.resources.stone = $rootScope.game.resources.stone +resources;
         $rootScope.attacked = true;
 
-        console.log($rootScope.game.resources);
         rest.game.update({_id: game._id}, game, function() {
         });
 

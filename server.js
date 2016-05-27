@@ -26,15 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-// catch 404 and forward to error handler
+
 app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// production error handler
-// no stacktraces leaked to user
+
 app.use((err, req, res, next) => {
 
     err.status = err.status || 500;
@@ -52,15 +51,13 @@ app.use((err, req, res, next) => {
 let server = app.listen(config.http.port);
 
 server.on('listening', () => {
-    //console.log(`\033[32mServer listening on port ${port}\033[0m`);
-    //console.log(process.env.DEBUG);
+
     console.log(`Server listening on port ${config.http.port}`);
 
     //Init mongoose connection
     require('./api/db/db.js');
 
-    //Http listening hook
-    //require('./api/http/listening')();
+
 
 });
 

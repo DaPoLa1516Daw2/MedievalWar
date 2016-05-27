@@ -5,6 +5,9 @@ const Game = require('../../db/models/game');
 
 let router = module.exports = express.Router();
 
+/**
+ * get villages by world
+ */
 router.get('/map/:world', (req, res) => {
 
     var world = req.params.world;
@@ -21,6 +24,9 @@ router.get('/map/:world', (req, res) => {
     });
 });
 
+/**
+ * get village by _id
+ */
 router.get('/:_id', (req , res) =>{
 
     var id = req.params._id;
@@ -40,6 +46,9 @@ router.get('/:_id', (req , res) =>{
 
 });
 
+/**
+ * update village by _id
+ */
 router.put('/:_id', (req, res) => {
 
     var id = req.params._id;

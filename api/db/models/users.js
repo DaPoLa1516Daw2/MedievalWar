@@ -3,6 +3,9 @@
 const mongoose = require('mongoose');
 const db = require('../db');
 
+/**
+ * User schema for mongoose
+ */
 let schema = new mongoose.Schema({
     username: {type: String, unique: true},
     password: {type: String},

@@ -2,6 +2,9 @@
 
 const mongoose = require('mongoose');
 
+/**
+ * schema for tavern object
+ */
 let schema = new mongoose.Schema({
     level: {type: Number},
     gold: {type: Number},

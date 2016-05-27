@@ -1,19 +1,24 @@
 'use strict';
-/**
- * TODO function to Date
- * TODO function to milliseconds
- */
 
+/**
+ * game controller
+ */
 app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeout, $interval) {
 
     //var keys = [];
 
+    /**
+     * if you attack this add the resources
+     */
     if($rootScope.attacked) {
         $scope.game = $rootScope.game;
         _update();
         delete $rootScope.attacked;
     }
 
+    /**
+     * get your game from DB and
+     */
     rest.game.get({_id: $rootScope.user.game}, function(game){
 
         $scope.game = game;
@@ -32,7 +37,10 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
 
                     }else {
 
-
+                        /**
+                         * for every object in object Game if are building and is not finished do a timeout
+                         * with the time remaining
+                         */
                         $timeout(function(key) {
                             $scope.game[key].level++;
                             delete $scope.game[key].finish;
@@ -55,6 +63,7 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
             }
         }
 
+
         $scope.game.resources.gold = $scope.game.resources.gold - $scope.game.attacks.gold;
         $scope.game.resources.stone = $scope.game.resources.stone - $scope.game.attacks.stone;
         $scope.game.attacks.gold = 0;
@@ -70,6 +79,9 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
 
     });
 
+    /**
+     * do an interval to win every 10 minutes gold and stone
+     */
     $interval(function() {
 
         $scope.game.resources.gold = Math.round($scope.game.resources.gold + (($scope.game.goldMine.income * 16) /100));
@@ -78,6 +90,10 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
 
     }, 600000);
 
+    /**
+     * open a modal to build an item
+     * @param type represents the item what you want build
+     */
     $scope.create = function(type) {
 
         $uibModal.open({
@@ -115,6 +131,10 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
             $scope.game.resources.stone = $scope.game.resources.stone - item.stone;
             _update();
 
+
+            /**
+             * do a time out with the item
+             */
             $timeout(function() {
 
                 if(type == 'warrior' || type == 'archer') {
@@ -145,11 +165,18 @@ app.controller('gameCtrl', function($scope, rest ,$rootScope, $uibModal, $timeou
         });
     };
 
+    /**
+     * go to world map
+     */
     $scope.worldMap = function() {
         $rootScope.game = $scope.game;
         $rootScope.wMap = true;
     };
 
+    /**
+     * update this game in BD
+     * @private
+     */
     function _update() {
 
         if( $scope.game.tower.level > 0 && $scope.game.wall.level > 0) {
