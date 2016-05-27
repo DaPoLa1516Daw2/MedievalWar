@@ -6,7 +6,7 @@ const recorder = require('./plugins/recorder');
 
 
 let db = mongoose.createConnection(config.db.url);
-
+db.authenticate(config.db.user,config.db.password)
 db.on('open', () => {
     console.log(`Connected to MongoDB at ${config.db.url}`);
 });
